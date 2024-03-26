@@ -29,17 +29,21 @@
 }
 
 .color-0 {
-  background-color: red;
+  background-color: rgb(34, 149, 8);
+  /*background-color: rgb(34, 149, 8);*/
 }
 
 .color-1 {
-  background-color: blue;
+  background-color: rgb(28, 26, 28);
+  /*background-color: rgb(28, 26, 28);*/
 }
 
 .color-2 {
-  background-color: green;
+  background-color: rgb(164, 10, 9);
+  /*background-color: rgb(144, 9, 8);*/
 }
 
 .color-3 {
-  background-color: yellow;
+  background-color: rgb(17, 98, 176);
+  /*background-color: rgb(14, 82, 148);*/
 }
