@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject, finalize, Subject} from "rxjs";
 
 export enum GameState {
   Starting,
@@ -40,7 +40,11 @@ export class GameManagerService {
   private _interactable = new BehaviorSubject<boolean>(false);
   interactable$ = this._interactable.asObservable();
 
+  private _score = new BehaviorSubject<number>(0);
+  score$ = this._score.asObservable();
+
   startGame() {
+    this._score.next(0);
     this._gameState.next(GameState.Starting);
     this.startCountdown(this.startDuration);
     this._cards.next(this.generateCardsArray());
@@ -82,6 +86,18 @@ export class GameManagerService {
     let array = [0, 1, 2, 3];
     array.sort(() => Math.random() - 0.5);
     return array;
+  }
+
+  updateScore(newScore: number) {
+    this._score.next(newScore);
+  }
+
+  incrementScore(value: number) {
+    this._score.next(this._score.value + value);
+  }
+
+  endGame() {
+    console.log("fin de la partie")
   }
 
 

@@ -25,6 +25,8 @@ export class GameComponent {
   private readonly countdownSubscription: Subscription;
   private interactableSubscription: Subscription;
   private rulesSubscription: Subscription;
+  private scoreSubscription: Subscription;
+  score!: number;
 
   constructor(private gameManager: GameManagerService) {
     this.gameStateSubscription = this.gameManager.gameState$.subscribe(gameState => {
@@ -54,6 +56,10 @@ export class GameComponent {
 
     this.rulesSubscription = this.gameManager.rules$.subscribe(rules => {
       this.rules = rules;
+    });
+
+    this.scoreSubscription = this.gameManager.score$.subscribe(score => {
+      this.score = score;
     });
   }
 
@@ -98,14 +104,19 @@ export class GameComponent {
 
   calculatePoints (color: number) {
     if (this.rules[0] == color) {
-        console.log("Situation 1");
+        console.log("+1");
+        this.gameManager.incrementScore(1);
     } else if (this.rules[1] == color) {
-        console.log("Situation 2");
+      console.log("+2");
+      this.gameManager.incrementScore(2);
     } else if (this.rules[2] == color) {
-        console.log("Situation 3");
+      console.log("+3");
+      this.gameManager.incrementScore(3);
     } else if (this.rules[3] == color) {
-        console.log("Situation 4");
+        console.log("end game");
+        this.gameManager.endGame();
     }
+    console.log("score: " + this.score);
   }
 
 
@@ -140,6 +151,10 @@ export class GameComponent {
 
     if (this.rulesSubscription) {
       this.rulesSubscription.unsubscribe();
+    }
+
+    if (this.scoreSubscription) {
+      this.scoreSubscription.unsubscribe();
     }
   }
 
