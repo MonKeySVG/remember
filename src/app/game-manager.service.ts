@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, finalize, Subject} from "rxjs";
+import {CardComponent} from "./card/card.component";
 
 export enum GameState {
   Starting,
@@ -96,8 +97,11 @@ export class GameManagerService {
     this._score.next(this._score.value + value);
   }
 
-  endGame() {
-    console.log("fin de la partie")
+  endGame(cardComponent?: CardComponent) {
+    this._gameState.next(GameState.Ended);
+    if (cardComponent) {
+      cardComponent.startShakeAndStop()
+    }
   }
 
 

@@ -5,7 +5,7 @@
 <div class="game-infos-container">
   <h2 *ngIf="gameState == GameState.Starting" class="startingCountdown">{{countdown}}</h2>
 
-  <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
+  <div *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="rules left-rules">
 
     <div class="rule">
       <app-symbol [color]="rules[0]"></app-symbol>
@@ -19,9 +19,9 @@
 
   </div>
   <h2 *ngIf="gameState == GameState.Remembering" class="rememberingCountdown">{{countdown}}</h2>
-  <h2 *ngIf="gameState == GameState.Guessing" class="score">{{score}}</h2>
+  <h2 *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="score">{{score}}</h2>
 
-  <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
+  <div *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="rules left-rules">
 
     <div class="rule">
       <app-symbol [color]="rules[2]"></app-symbol>

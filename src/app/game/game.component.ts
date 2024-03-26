@@ -99,13 +99,13 @@ export class GameComponent {
     console.log(this.rules);
     if (this.gameState == GameState.Guessing) {
       cardComponent.flipToFront();
-      this.calculatePoints(color);
+      this.calculatePoints(color, cardComponent);
     }
   }
 
 
 
-  calculatePoints (color: number) {
+  calculatePoints (color: number, cardComponent: CardComponent) {
     if (this.rules[0] == color) {
         console.log("+1");
         this.gameManager.incrementScore(1);
@@ -116,8 +116,7 @@ export class GameComponent {
       console.log("+3");
       this.gameManager.incrementScore(3);
     } else if (this.rules[3] == color) {
-        console.log("end game");
-        this.gameManager.endGame();
+        this.gameManager.endGame(cardComponent);
     }
     console.log("score: " + this.score);
   }
