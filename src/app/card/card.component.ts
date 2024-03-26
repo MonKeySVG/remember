@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
+  @Input () color: number = 0;
+  flipped: boolean = true;
 
+  flip() {
+    this.flipped = !this.flipped;
+  }
+
+  flipToBack() {
+    this.flipped = false;
+  }
+
+  flipToFront() {
+    this.flipped = true;
+  }
 }

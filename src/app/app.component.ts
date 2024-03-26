@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppManagerService, AppState} from "./app-manager.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'memory-game';
+
+  state = AppState;
+
+  constructor(public appManager: AppManagerService) { }
 }

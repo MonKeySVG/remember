@@ -1,0 +1,30 @@
+.button-container {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+  width: fit-content;
+
+
+
+  padding: 10px;
+}
+
+button {
+  font-family: Risbeg, sans-serif;
+  padding: 20px 40px;
+  font-size: 3rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+button:hover {
+
+  scale: 0.99;
+}
+
+.button-container:hover {
+  scale: 0.99;
+
+}

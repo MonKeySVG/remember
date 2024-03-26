@@ -1,1 +1,14 @@
-<p>card works!</p>
+<section class="card-container">
+  <div class="card shadow" [class.flipped]="flipped" >
+    <div class="side back">
+      <div class="border shadow">
+        <app-symbol [color]=color></app-symbol>
+      </div>
+    </div>
+
+    <div class="side front">
+      <div class="border shadow">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2vw;
+  justify-items: center;
+  align-items: center;
+  padding-inline: 6vw;
+}

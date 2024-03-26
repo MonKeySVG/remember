@@ -1,0 +1,45 @@
+
+
+.symbol-container {
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.6vw;
+
+}
+
+.symbol-out {
+  transform: rotate(45deg);
+  width: 60%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vw;
+
+}
+
+.symbol-in {
+  width: 80%;
+  height: 80%;
+  border-radius: 0.4vw;
+
+}
+
+.color-0 {
+  background-color: red;
+}
+
+.color-1 {
+  background-color: blue;
+}
+
+.color-2 {
+  background-color: green;
+}
+
+.color-3 {
+  background-color: yellow;
+}

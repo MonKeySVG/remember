@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-symbol',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './symbol.component.css'
 })
 export class SymbolComponent {
-
+  @Input () color: number = 0;
 }
