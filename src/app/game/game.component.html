@@ -2,9 +2,33 @@
   <h1>Remember</h1>
 </div>
 
-<div class="countdown-container">
+<div class="game-infos-container">
   <h2 *ngIf="gameState == GameState.Starting" class="startingCountdown">{{countdown}}</h2>
+
+  <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
+
+    <div class="rule">
+      <app-symbol [color]="0"></app-symbol>
+    </div>
+
+    <div class="rule">
+      <app-symbol [color]="1"></app-symbol>
+    </div>
+
+  </div>
   <h2 [ngClass]="{'hidden': gameState == GameState.Starting}" class="rememberingCountdown">{{countdown}}</h2>
+
+  <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
+
+    <div class="rule">
+      <app-symbol [color]="2"></app-symbol>
+    </div>
+
+    <div class="rule">
+      <app-symbol [color]="3"></app-symbol>
+    </div>
+
+  </div>
 </div>
 
 <div class="cards-container">

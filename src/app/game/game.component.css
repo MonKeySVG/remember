@@ -19,10 +19,15 @@
   padding-inline: 7vw;
 }
 
-.countdown-container {
+.game-infos-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.rules {
+  display: flex;
+  gap: 2vw;
 }
 
 
