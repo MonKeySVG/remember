@@ -1,5 +1,5 @@
 <div [ngSwitch]="appManager.state">
   <app-menu *ngSwitchCase="state.MENU"></app-menu>
   <app-game *ngSwitchCase="state.GAME"></app-game>
-<!--  <app-score-screen *ngSwitchCase="state.SCORE_SCREEN"></app-score-screen>-->
+  <app-score-screen *ngSwitchCase="state.SCORE_SCREEN"></app-score-screen>
 </div>

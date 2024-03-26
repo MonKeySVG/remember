@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AppManagerService, AppState} from "../app-manager.service";
+import {GameManagerService} from "../game-manager.service";
 
 @Component({
   selector: 'app-score-screen',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class ScoreScreenComponent {
 
+  constructor(private appManager: AppManagerService,
+              public gameManager: GameManagerService) { }
+
+  startGame() {
+    this.appManager.changeState(AppState.GAME);
+    this.gameManager.startGame();
+  }
+
+  backToMenu() {
+    this.appManager.changeState(AppState.MENU);
+  }
 }

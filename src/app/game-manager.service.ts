@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, finalize, Subject} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Subject} from "rxjs";
 import {CardComponent} from "./card/card.component";
+import {AppManagerService, AppState} from "./app-manager.service";
 
 export enum GameState {
   Starting,
@@ -97,14 +98,21 @@ export class GameManagerService {
     this._score.next(this._score.value + value);
   }
 
+  getScore() {
+    return this._score.value;
+  }
+
   endGame(cardComponent?: CardComponent) {
     this._gameState.next(GameState.Ended);
     if (cardComponent) {
       cardComponent.startShakeAndStop()
+      setTimeout(() => {
+        this.appManagerService.changeState(AppState.SCORE_SCREEN);
+      }, 1000);
     }
   }
 
 
 
-  constructor() { }
+  constructor(private appManagerService: AppManagerService) { }
 }
