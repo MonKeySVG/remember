@@ -1,4 +1,15 @@
-<h1>{{this.gameManager.getScore()}}</h1>
-<app-button text="Play Again" btnClass="style-1" (click)="startGame()"></app-button>
-<app-button text="Menu" btnClass="style-1" (click)="backToMenu()"></app-button>
+<div class="container">
+  <div>
+    <h1>{{this.gameManager.getScore()}}</h1>
+  </div>
+
+  <div class="buttons-container">
+
+    <app-button text="Menu" btnClass="style-1" (click)="backToMenu()"></app-button>
+    <app-button text="Play Again" btnClass="style-1" (click)="startGame()"></app-button>
+
+  </div>
+</div>
+
+
 
