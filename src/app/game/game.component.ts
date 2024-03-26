@@ -22,6 +22,7 @@ export class GameComponent {
   private flipAllCardsBackSubscription: Subscription;
   private readonly cardsSubscription: Subscription;
   private readonly countdownSubscription: Subscription;
+  private interactableSubscription: Subscription;
 
   constructor(private gameManager: GameManagerService) {
     this.gameStateSubscription = this.gameManager.gameState$.subscribe(gameState => {
@@ -43,6 +44,10 @@ export class GameComponent {
 
     this.flipAllCardsBackSubscription = this.gameManager.flipAllCardsBack$.subscribe(() => {
       this.flipAllToBack();
+    });
+
+    this.interactableSubscription = this.gameManager.interactable$.subscribe(interactable => {
+      this.makeCardsInteractable(interactable);
     });
   }
 
@@ -66,6 +71,12 @@ export class GameComponent {
   flipAllToBack() {
     this.cards.forEach(card => {
       card.flipToBack();
+    });
+  }
+
+  makeCardsInteractable(value: boolean) {
+    this.cards.forEach(card => {
+      card.makeInteractable(value);
     });
   }
 
@@ -93,6 +104,10 @@ export class GameComponent {
 
     if (this.flipAllCardsBackSubscription) {
       this.flipAllCardsBackSubscription.unsubscribe();
+    }
+
+    if (this.interactableSubscription) {
+      this.interactableSubscription.unsubscribe();
     }
   }
 

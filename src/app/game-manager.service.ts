@@ -15,7 +15,7 @@ export enum GameState {
 export class GameManagerService {
 
   startDuration: number = 3;
-  rememberDuration: number = 60;
+  rememberDuration: number = 6;
 
   numberOfCards: number = 50;
 
@@ -33,6 +33,9 @@ export class GameManagerService {
 
   private _flipAllCardsBack = new Subject<void>();
   flipAllCardsBack$ = this._flipAllCardsBack.asObservable();
+
+  private _interactable = new BehaviorSubject<boolean>(false);
+  interactable$ = this._interactable.asObservable();
 
   startGame() {
     this._gameState.next(GameState.Starting);
@@ -54,6 +57,7 @@ export class GameManagerService {
         } else if (this._gameState.value === GameState.Remembering) {
           this._gameState.next(GameState.Guessing);
           this._flipAllCardsBack.next();
+          this._interactable.next(true);
         }
         clearInterval(intervalId);
 

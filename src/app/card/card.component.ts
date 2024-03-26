@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 export class CardComponent {
   @Input () color: number = 0;
   @Input () flipped: boolean = false;
+  interactable: boolean = false;
 
   flip() {
     this.flipped = !this.flipped;
@@ -20,4 +21,10 @@ export class CardComponent {
   flipToFront() {
     this.flipped = true;
   }
+
+  makeInteractable(value: boolean) {
+    this.interactable = value;
+  }
+
+
 }

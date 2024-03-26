@@ -105,3 +105,7 @@
   border-radius: 1vw;
 
 }
+
+.interactable:hover {
+  transform: scale(1.1);
+}
