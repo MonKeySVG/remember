@@ -3,7 +3,8 @@
 </div>
 
 <div class="countdown-container">
-  <h2>{{countdown}}</h2>
+  <h2 *ngIf="gameState == GameState.Starting" class="startingCountdown">{{countdown}}</h2>
+  <h2 [ngClass]="{'hidden': gameState == GameState.Starting}" class="rememberingCountdown">{{countdown}}</h2>
 </div>
 
 <div class="cards-container">

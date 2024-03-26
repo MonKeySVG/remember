@@ -3,7 +3,9 @@ import {BehaviorSubject, Subject} from "rxjs";
 
 export enum GameState {
   Starting,
-  InProgress,
+  Remembering,
+  Guessing,
+  Ended,
   Inactive
 }
 
@@ -26,8 +28,11 @@ export class GameManagerService {
   private _countdown = new BehaviorSubject<number>(this.startDuration);
   countdown$ = this._countdown.asObservable();
 
-  private _flipAllCards = new Subject<void>();
-  flipAllCards$ = this._flipAllCards.asObservable();
+  private _flipAllCardsFront = new Subject<void>();
+  flipAllCardsFront$ = this._flipAllCardsFront.asObservable();
+
+  private _flipAllCardsBack = new Subject<void>();
+  flipAllCardsBack$ = this._flipAllCardsBack.asObservable();
 
   startGame() {
     this._gameState.next(GameState.Starting);
@@ -43,10 +48,12 @@ export class GameManagerService {
         this._countdown.next(countdown);
       } else {
         if (this._gameState.value === GameState.Starting) {
-          this._gameState.next(GameState.InProgress);
-          // Flip all the cards
-          this._flipAllCards.next();
+          this._gameState.next(GameState.Remembering);
+          this._flipAllCardsFront.next();
           this.startCountdown(this.rememberDuration);
+        } else if (this._gameState.value === GameState.Remembering) {
+          this._gameState.next(GameState.Guessing);
+          this._flipAllCardsBack.next();
         }
         clearInterval(intervalId);
 
