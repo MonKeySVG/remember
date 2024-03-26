@@ -12,6 +12,7 @@ export class GameComponent {
   cardsValues!: number[];
   countdown!: number;
   gameState!: GameState;
+  rules!: number[];
 
 
 
@@ -23,6 +24,7 @@ export class GameComponent {
   private readonly cardsSubscription: Subscription;
   private readonly countdownSubscription: Subscription;
   private interactableSubscription: Subscription;
+  private rulesSubscription: Subscription;
 
   constructor(private gameManager: GameManagerService) {
     this.gameStateSubscription = this.gameManager.gameState$.subscribe(gameState => {
@@ -48,6 +50,10 @@ export class GameComponent {
 
     this.interactableSubscription = this.gameManager.interactable$.subscribe(interactable => {
       this.makeCardsInteractable(interactable);
+    });
+
+    this.rulesSubscription = this.gameManager.rules$.subscribe(rules => {
+      this.rules = rules;
     });
   }
 
@@ -81,6 +87,28 @@ export class GameComponent {
   }
 
 
+  onClick(color: number, cardComponent: CardComponent) {
+    console.log(color);
+    console.log(this.rules);
+    if (this.gameState == GameState.Guessing) {
+      cardComponent.flipToFront();
+      this.calculatePoints(color);
+    }
+  }
+
+  calculatePoints (color: number) {
+    if (this.rules[0] == color) {
+        console.log("Situation 1");
+    } else if (this.rules[1] == color) {
+        console.log("Situation 2");
+    } else if (this.rules[2] == color) {
+        console.log("Situation 3");
+    } else if (this.rules[3] == color) {
+        console.log("Situation 4");
+    }
+  }
+
+
 
 
 
@@ -108,6 +136,10 @@ export class GameComponent {
 
     if (this.interactableSubscription) {
       this.interactableSubscription.unsubscribe();
+    }
+
+    if (this.rulesSubscription) {
+      this.rulesSubscription.unsubscribe();
     }
   }
 

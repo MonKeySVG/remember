@@ -25,6 +25,9 @@ export class GameManagerService {
   private _cards = new BehaviorSubject<number[]>([]);
   cards$ = this._cards.asObservable();
 
+  private _rules = new BehaviorSubject<number[]>([]);
+  rules$ = this._rules.asObservable();
+
   private _countdown = new BehaviorSubject<number>(this.startDuration);
   countdown$ = this._countdown.asObservable();
 
@@ -55,6 +58,7 @@ export class GameManagerService {
           this._flipAllCardsFront.next();
           this.startCountdown(this.rememberDuration);
         } else if (this._gameState.value === GameState.Remembering) {
+          this._rules.next(this.generateRulesArray());
           this._gameState.next(GameState.Guessing);
           this._flipAllCardsBack.next();
           this._interactable.next(true);
@@ -71,6 +75,12 @@ export class GameManagerService {
       array.push(Math.floor(Math.random() * 4));
     }
     console.log(array);
+    return array;
+  }
+
+  generateRulesArray() {
+    let array = [0, 1, 2, 3];
+    array.sort(() => Math.random() - 0.5);
     return array;
   }
 

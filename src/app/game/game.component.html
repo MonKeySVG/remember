@@ -9,6 +9,7 @@
 
 <div class="cards-container">
   <div *ngFor="let card of cardsValues">
-    <app-card [color]="card"></app-card>
+    <app-card #cardRef [color]="card" (click)="onClick(card, cardRef)"></app-card>
+
   </div>
 </div>
