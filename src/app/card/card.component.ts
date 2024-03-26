@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class CardComponent {
   @Input () color: number = 0;
-  flipped: boolean = true;
+  @Input () flipped: boolean = false;
 
   flip() {
     this.flipped = !this.flipped;
