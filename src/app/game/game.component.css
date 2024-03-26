@@ -21,13 +21,22 @@
 
 .game-infos-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
+  height: 7vw;
 }
 
 .rules {
   display: flex;
-  gap: 2vw;
+  justify-content: center;
+  flex: 1;
+  gap: 5vw;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 

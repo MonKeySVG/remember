@@ -13,6 +13,7 @@ export class GameComponent {
   countdown!: number;
   gameState!: GameState;
   rules!: number[];
+  textRules: string[] = ["+1", "+2", "+3", "Defeat"];
 
 
 
@@ -101,6 +102,8 @@ export class GameComponent {
       this.calculatePoints(color);
     }
   }
+
+
 
   calculatePoints (color: number) {
     if (this.rules[0] == color) {

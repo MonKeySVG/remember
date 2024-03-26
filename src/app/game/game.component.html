@@ -8,24 +8,29 @@
   <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
 
     <div class="rule">
-      <app-symbol [color]="0"></app-symbol>
+      <app-symbol [color]="rules[0]"></app-symbol>
+      <h2>{{textRules[0]}}</h2>
     </div>
 
     <div class="rule">
-      <app-symbol [color]="1"></app-symbol>
+      <app-symbol [color]="rules[1]"></app-symbol>
+      <h2>{{textRules[1]}}</h2>
     </div>
 
   </div>
-  <h2 [ngClass]="{'hidden': gameState == GameState.Starting}" class="rememberingCountdown">{{countdown}}</h2>
+  <h2 *ngIf="gameState == GameState.Remembering" class="rememberingCountdown">{{countdown}}</h2>
+  <h2 *ngIf="gameState == GameState.Guessing" class="score">{{score}}</h2>
 
   <div *ngIf="gameState == GameState.Guessing" class="rules left-rules">
 
     <div class="rule">
-      <app-symbol [color]="2"></app-symbol>
+      <app-symbol [color]="rules[2]"></app-symbol>
+      <h2>{{textRules[2]}}</h2>
     </div>
 
     <div class="rule">
-      <app-symbol [color]="3"></app-symbol>
+      <app-symbol [color]="rules[3]"></app-symbol>
+      <h2>{{textRules[3]}}</h2>
     </div>
 
   </div>
