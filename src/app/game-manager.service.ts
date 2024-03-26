@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 export enum GameState {
   Starting,
@@ -26,6 +26,9 @@ export class GameManagerService {
   private _countdown = new BehaviorSubject<number>(this.startDuration);
   countdown$ = this._countdown.asObservable();
 
+  private _flipAllCards = new Subject<void>();
+  flipAllCards$ = this._flipAllCards.asObservable();
+
   startGame() {
     this._gameState.next(GameState.Starting);
     this.startCountdown(this.startDuration);
@@ -42,6 +45,7 @@ export class GameManagerService {
         if (this._gameState.value === GameState.Starting) {
           this._gameState.next(GameState.InProgress);
           // Flip all the cards
+          this._flipAllCards.next();
           this.startCountdown(this.rememberDuration);
         }
         clearInterval(intervalId);
