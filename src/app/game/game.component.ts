@@ -99,6 +99,7 @@ export class GameComponent {
     console.log(this.rules);
     if (this.gameState == GameState.Guessing) {
       cardComponent.flipToFront();
+      cardComponent.makeInteractable(false);
       this.calculatePoints(color, cardComponent);
     }
   }

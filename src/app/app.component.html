@@ -1,4 +1,4 @@
-<div [ngSwitch]="appManager.state">
+<div [ngSwitch]="appManager.state" class="app-container">
   <app-menu *ngSwitchCase="state.MENU"></app-menu>
   <app-game *ngSwitchCase="state.GAME"></app-game>
   <app-score-screen *ngSwitchCase="state.SCORE_SCREEN"></app-score-screen>
