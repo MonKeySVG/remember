@@ -10,6 +10,7 @@ export class CardComponent {
   @Input () flipped: boolean = false;
   interactable: boolean = false;
   shake: boolean = false;
+  showingPoints: boolean = false;
 
   flip() {
     this.flipped = !this.flipped;
@@ -40,6 +41,11 @@ export class CardComponent {
     setTimeout(() => {
       this.shake = false;
     }, 1000);
+  }
+
+  displayPoints() {
+    this.showingPoints = true;
+    return this.color;
   }
 
 
