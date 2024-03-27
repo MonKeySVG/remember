@@ -11,6 +11,7 @@ export class CardComponent {
   interactable: boolean = false;
   shake: boolean = false;
   showingPoints: boolean = false;
+  displayedPoints: string = '';
 
   flip() {
     this.flipped = !this.flipped;
@@ -43,9 +44,10 @@ export class CardComponent {
     }, 1000);
   }
 
-  displayPoints() {
+  displayPoints(points: string) {
     this.showingPoints = true;
-    return this.color;
+    this.displayedPoints = points;
+    return;
   }
 
 
