@@ -110,18 +110,18 @@ export class GameComponent {
     if (this.rules[0] == color) {
         console.log("+1");
         this.gameManager.incrementScore(1);
-        return "+1";
+        return this.textRules[0];
     } else if (this.rules[1] == color) {
       console.log("+2");
       this.gameManager.incrementScore(2);
-      return "+2";
+      return this.textRules[1];
     } else if (this.rules[2] == color) {
       console.log("+3");
       this.gameManager.incrementScore(3);
-      return "+3";
+      return this.textRules[2];
     } else if (this.rules[3] == color) {
         this.gameManager.endGame(cardComponent);
-        return "You lost :)";
+        return this.textRules[3];
 
     }
     return "";
