@@ -18,7 +18,7 @@ export enum GameState {
 export class GameManagerService {
 
   startDuration: number = 3;
-  rememberDuration: number = 6;
+  rememberDuration: number = 60;
 
   numberOfCards: number = 50;
 
