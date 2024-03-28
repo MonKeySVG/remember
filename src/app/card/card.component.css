@@ -177,3 +177,7 @@
 .show-points {
   animation: showPoints 0.5s ;
 }
+
+.reduced-opacity {
+  opacity: 0.5;
+}

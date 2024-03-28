@@ -8,6 +8,7 @@ export enum GameState {
   Remembering,
   Guessing,
   Ended,
+  WAITING_FOR_INPUT,
   Inactive
 }
 
@@ -44,6 +45,9 @@ export class GameManagerService {
 
   private _score = new BehaviorSubject<number>(0);
   score$ = this._score.asObservable();
+
+  private _reduceNonFlippedOpacity = new Subject<void>();
+  reduceNonFlippedOpacity$ = this._reduceNonFlippedOpacity.asObservable();
 
   startGame() {
     this._score.next(0);
@@ -102,12 +106,19 @@ export class GameManagerService {
     return this._score.value;
   }
 
+  switchToScoreScreen() {
+    this.appManagerService.changeState(AppState.SCORE_SCREEN);
+  }
+
   endGame(cardComponent?: CardComponent) {
     this._gameState.next(GameState.Ended);
     if (cardComponent) {
       cardComponent.startShakeAndStop()
       setTimeout(() => {
-        this.appManagerService.changeState(AppState.SCORE_SCREEN);
+        this._reduceNonFlippedOpacity.next();
+        this._flipAllCardsFront.next();
+        this._gameState.next(GameState.WAITING_FOR_INPUT);
+
       }, 1000);
     }
   }

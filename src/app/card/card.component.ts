@@ -12,6 +12,7 @@ export class CardComponent {
   shake: boolean = false;
   showingPoints: boolean = false;
   displayedPoints: string = '';
+  reducedOpacity: boolean = false;
 
   flip() {
     this.flipped = !this.flipped;
@@ -23,6 +24,10 @@ export class CardComponent {
 
   flipToFront() {
     this.flipped = true;
+  }
+
+  reduceOpacity() {
+    this.reducedOpacity = true;
   }
 
   makeInteractable(value: boolean) {

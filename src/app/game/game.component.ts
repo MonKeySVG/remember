@@ -22,6 +22,7 @@ export class GameComponent {
   private gameStateSubscription: Subscription;
   private flipAllCardsFrontSubscription: Subscription;
   private flipAllCardsBackSubscription: Subscription;
+  private reduceNonFlippedOpacitySubscription: Subscription;
   private readonly cardsSubscription: Subscription;
   private readonly countdownSubscription: Subscription;
   private interactableSubscription: Subscription;
@@ -62,6 +63,10 @@ export class GameComponent {
     this.scoreSubscription = this.gameManager.score$.subscribe(score => {
       this.score = score;
     });
+
+    this.reduceNonFlippedOpacitySubscription = this.gameManager.reduceNonFlippedOpacity$.subscribe(() => {
+      this.reduceNonFlippedOpacity();
+    });
   }
 
 
@@ -84,6 +89,14 @@ export class GameComponent {
   flipAllToBack() {
     this.cards.forEach(card => {
       card.flipToBack();
+    });
+  }
+
+  reduceNonFlippedOpacity() {
+    this.cards.forEach(card => {
+      if (!card.flipped) {
+        card.reduceOpacity();
+      }
     });
   }
 
@@ -125,6 +138,12 @@ export class GameComponent {
 
     }
     return "";
+  }
+
+  onContainerClick() {
+    if (this.gameState === GameState.WAITING_FOR_INPUT) {
+      this.gameManager.switchToScoreScreen();
+    }
   }
 
 
