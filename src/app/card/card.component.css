@@ -152,7 +152,7 @@
   text-align: center;
   opacity: 0;
 
-  font-size: 2vw;
+  font-size: 3vw;
 }
 
 @keyframes showPoints {
@@ -177,6 +177,7 @@
 
 .show-points {
   animation: showPoints 0.5s ;
+  color: black;
 }
 
 .reduced-opacity {
