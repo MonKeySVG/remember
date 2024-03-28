@@ -3,7 +3,8 @@
 </div>
 
 <div class="game-infos-container">
-  <h2 *ngIf="gameState == GameState.Starting" class="startingCountdown">{{countdown}}</h2>
+
+
 
   <div *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="rules left-rules">
 
@@ -38,6 +39,9 @@
 </div>
 
 <div class="cards-container"  (click)="onContainerClick()">
+  <div *ngIf="gameState == GameState.Starting" class="startingCountdown">
+    <h2>{{countdown}}</h2>
+  </div>
   <div *ngFor="let card of cardsValues">
     <app-card #cardRef [color]="card" (click)="onClick(card, cardRef)"></app-card>
 

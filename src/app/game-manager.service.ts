@@ -22,6 +22,8 @@ export class GameManagerService {
 
   numberOfCards: number = 50;
 
+
+
   private _gameState = new BehaviorSubject<GameState>(GameState.Inactive);
   gameState$ = this._gameState.asObservable();
 

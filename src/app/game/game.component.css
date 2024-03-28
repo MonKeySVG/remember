@@ -11,6 +11,7 @@
 }
 
 .cards-container {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 2vw;
@@ -46,10 +47,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  padding: 2vw 8vw;
+  width: 25vw;
+  height: 25vw;
 
-  font-size: 20vw;
-  margin: 0;
+  display: flex;
+  justify-content: center;
+
+
 
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
@@ -60,7 +64,23 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.startingCountdown h2 {
+  font-size: 20vw;
+  padding-top: 4vw;
+  margin: 0;
+}
+
 .score {
   flex: 0.5;
   text-align: center;
+}
+
+@keyframes fadeInOut {
+  0% {opacity: 0;}
+  50% {opacity: 0.8;}
+  100% {opacity: 0;}
+}
+
+.waiting-for-input {
+  animation: fadeInOut 2s linear infinite;
 }
