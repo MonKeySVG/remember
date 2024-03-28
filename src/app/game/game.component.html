@@ -20,6 +20,7 @@
   </div>
   <h2 *ngIf="gameState == GameState.Remembering" class="rememberingCountdown">{{countdown}}</h2>
   <h2 *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="score">{{score}}</h2>
+  <h2 *ngIf="gameState == GameState.WAITING_FOR_INPUT" class="waiting-for-input">Click to continue</h2>
 
   <div *ngIf="gameState == GameState.Guessing || gameState == GameState.Ended" class="rules left-rules">
 

@@ -112,6 +112,7 @@ export class GameManagerService {
 
   endGame(cardComponent?: CardComponent) {
     this._gameState.next(GameState.Ended);
+    this._interactable.next(false);
     if (cardComponent) {
       cardComponent.startShakeAndStop()
       setTimeout(() => {

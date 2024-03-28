@@ -179,5 +179,5 @@
 }
 
 .reduced-opacity {
-  opacity: 0.5;
+  filter: brightness(0.7);
 }
